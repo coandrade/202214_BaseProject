@@ -1,0 +1,891 @@
+{
+	"info": {
+		"_postman_id": "e79162d6-44fe-4c5e-93f2-992e067ffe62",
+		"name": "Aerolíneas-Aeropuertos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23114965"
+	},
+	"item": [
+		{
+			"name": "Asociar un aeropuerto a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar un aeropuerto a una aerolínea",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "290"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"122-FLRBXiuspOm6Ucq7wOm0GiZ+AIY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:05:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0f004121-188c-476f-bbe2-352dfd769cee\",\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"1950-06-25\",\n    \"paginaWeb\": \"www.avianca.com\",\n    \"aeropuertos\": [\n        {\n            \"id\": \"08778186-be15-4c17-8c41-057bad1da979\",\n            \"nombre\": \"Tocumen\",\n            \"codigo\": \"toc\",\n            \"pais\": \"Panama\",\n            \"ciudad\": \"Panama\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un aeropuerto que no existe a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airport with id 4928d12f-1cb4-4d47-b848-65781876b80c has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/4928d12f-1cb4-4d47-b848-65781876b80c",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports",
+						"4928d12f-1cb4-4d47-b848-65781876b80c"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar un aeropuerto que no existe a una aerolínea",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/4928d12f-1cb4-4d47-b848-65781876b80c",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports",
+								"4928d12f-1cb4-4d47-b848-65781876b80c"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:06:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los aeropuertos que cubre una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of airports > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los aeropuertos que cubre una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"73-IXM21574pKmUPlJJSHfouhodH+o\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:07:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"08778186-be15-4c17-8c41-057bad1da979\",\n        \"nombre\": \"Tocumen\",\n        \"codigo\": \"toc\",\n        \"pais\": \"Panama\",\n        \"ciudad\": \"Panama\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto asociado a una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-78L75YtAPqvyPR+QZg7riGvT71U\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:08:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"08778186-be15-4c17-8c41-057bad1da979\",\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"toc\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\",\n    \"aerolineas\": [\n        {\n            \"id\": \"0f004121-188c-476f-bbe2-352dfd769cee\",\n            \"nombre\": \"Avianca\",\n            \"descripcion\": \"aerolinea colombina\",\n            \"fechaFundacion\": \"1950-06-25\",\n            \"paginaWeb\": \"www.avianca.com\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/5932764a-8586-4b62-94dd-86b39972472a",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports",
+						"5932764a-8586-4b62-94dd-86b39972472a"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/5932764a-8586-4b62-94dd-86b39972472a",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports",
+								"5932764a-8586-4b62-94dd-86b39972472a"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:08:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar los aeropuertos que están asociados a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n    \"name\": \"Name\",\n    \"code\": \"nam\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n    \"id\": \"904f9e17-8aa1-4fc1-9ca0-104327c33fc7\"\n},\n{\n    \"name\": \"Name\",\n    \"code\": \"name\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n       \"id\": \"c4770d35-0716-4ae3-ad29-57f2053a4848\"\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar los aeropuertos que están asociados a una aerolínea",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"nombre\": \"olaya herrera\",\n    \"codido\": \"ohm\",\n    \"country\": \"Colombia\",\n    \"city\": \"Medellin\",\n    \"id\": \"08778186-be15-4c17-8c41-057bad1da979\"\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "406"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"196-DqZCsfX6QnVpg2Dgker2VxPZ6lw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:11:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"0f004121-188c-476f-bbe2-352dfd769cee\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"aerolinea colombina\",\n        \"fechaFundacion\": \"1950-06-25\",\n        \"paginaWeb\": \"www.avianca.com\",\n        \"aeropuertos\": [\n            {\n                \"id\": \"08778186-be15-4c17-8c41-057bad1da979\",\n                \"nombre\": \"Tocumen\",\n                \"codigo\": \"toc\",\n                \"pais\": \"Panama\",\n                \"ciudad\": \"Panama\"\n            },\n            {\n                \"id\": \"08778186-be15-4c17-8c41-057bad1da979\",\n                \"nombre\": \"Tocumen\",\n                \"codigo\": \"toc\",\n                \"pais\": \"Panama\",\n                \"ciudad\": \"Panama\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Actualizar los aeropuertos asociados a una aerolínea, con un aeropuerto inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airport with id 904f9e17-8aa1-4fc1-9ca0-104327c33fc8 has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n    \"name\": \"Name\",\n    \"code\": \"nam\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n    \"id\": \"904f9e17-8aa1-4fc1-9ca0-104327c33fc7\"\n},\n{\n    \"name\": \"Name\",\n    \"code\": \"name\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n       \"id\": \"904f9e17-8aa1-4fc1-9ca0-104327c33fc8\"\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar los aeropuertos asociados a una aerolínea, con un aeropuerto inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"name\": \"Name\",\n    \"code\": \"nam\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n    \"id\": \"904f9e17-8aa1-4fc1-9ca0-104327c33fc7\"\n},\n{\n    \"name\": \"Name\",\n    \"code\": \"name\",\n    \"country\": \"Colombia\",\n    \"city\": \"Pereira\",\n       \"id\": \"904f9e17-8aa1-4fc1-9ca0-104327c33fc8\"\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:12:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto previamente asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto previamente asociado a una aerolínea",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:12:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto que no estaba previamente asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airport with id a504f410-a8be-44b4-bb07-89944bc9a082 has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/a504f410-a8be-44b4-bb07-89944bc9a082",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}",
+						"airports",
+						"a504f410-a8be-44b4-bb07-89944bc9a082"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto que no estaba previamente asociado a una aerolínea",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}/airports/a504f410-a8be-44b4-bb07-89944bc9a082",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}",
+								"airports",
+								"a504f410-a8be-44b4-bb07-89944bc9a082"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 22:13:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		}
+	]
+}

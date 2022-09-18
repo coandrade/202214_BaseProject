@@ -30,7 +30,7 @@ export class AeropuertoService {
 
       async create(aeropuerto: Aeropuerto): Promise<Aeropuerto> {
         if (aeropuerto.codigo.length != 3) 
-            throw new BusinessLogicException("El codigo del aeropuerto debe tener solo 3 caracteres", BusinessError.BAD_REQUEST);
+            throw new BusinessLogicException("El codigo del aeropuerto debe tener solo 3 caracteres", BusinessError.PRECONDITION_FAILED);
         
         return await this.aeropuertoRepository.save(aeropuerto);
       }

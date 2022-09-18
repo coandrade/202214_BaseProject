@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "a295c204-a3fb-488b-b392-2c780481bacc",
+		"name": "Aerolineas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23114965"
+	},
+	"item": [
+		{
+			"name": "Crear Aerolinea Valida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"airline_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"1950-06-25\",\n    \"paginaWeb\":\"avianca.com\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Aerolinea Valida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"1950-06-25\",\n    \"paginaWeb\":\"www.avianca.com\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "160"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a0-Wu01f0DUmnnDemF6l3N5TgjOHrg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:17:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"1950-06-25\",\n    \"paginaWeb\": \"www.avianca.com\",\n    \"id\": \"26fb2a73-0530-497f-9300-ac7e51f7fafc\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Aerolinea Invalida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"   pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"2022-10-25\",\n    \"paginaWeb\":\"www.avianca.com\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Aerolinea Invalida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"2022-10-25\",\n    \"paginaWeb\":\"www.avianca.com\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-UTf1XXkP0YBAhONGrgDBAbQLTCk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:38:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"La fecha de fundacion es mayor a la fecha actual\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las aerolíneas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of airlines > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las aerolíneas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "179"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b3-sgCUQ8mJEQ7v3xNcuOVR+/yk/7w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:40:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"27617d1a-bba4-4fb4-a401-76a6a40ce70c\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"aerolinea colombina\",\n        \"fechaFundacion\": \"1950-06-25\",\n        \"paginaWeb\": \"www.avianca.com\",\n        \"aeropuertos\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener una aerolínea por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una aerolínea por ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "177"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b1-fHn4dT148nDf4WqmtSApu9YUl2g\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:42:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"27617d1a-bba4-4fb4-a401-76a6a40ce70c\",\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"aerolinea colombina\",\n    \"fechaFundacion\": \"1950-06-25\",\n    \"paginaWeb\": \"www.avianca.com\",\n    \"aeropuertos\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una aerolínea por un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airline with id 82433181-5b98-42b1-97a2-2520ba14a8d6 has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/82433181-5b98-42b1-97a2-2520ba14a8d6",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"82433181-5b98-42b1-97a2-2520ba14a8d6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una aerolínea por un ID que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/82433181-5b98-42b1-97a2-2520ba14a8d6",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"82433181-5b98-42b1-97a2-2520ba14a8d6"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-nbqXVNovym6E8UOgsdeRS6yPk6Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:43:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La aerolinea no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"JetBlue\",\n    \"descripcion\": \"Aerolinea de estados unidos\",\n    \"fechaFundacion\": \"1990-01-01\",\n    \"paginaWeb\":\"www.jetblue.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una aerolínea",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"JetBlue\",\n    \"descripcion\": \"Aerolinea de estados unidos\",\n    \"fechaFundacion\": \"1990-01-01\",\n    \"paginaWeb\":\"www.jetblue.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "168"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a8-yE0Q0jH/XYVKAvflg29AQ7y9fSo\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:47:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"27617d1a-bba4-4fb4-a401-76a6a40ce70c\",\n    \"nombre\": \"JetBlue\",\n    \"descripcion\": \"Aerolinea de estados unidos\",\n    \"fechaFundacion\": \"1990-01-01\",\n    \"paginaWeb\": \"www.jetblue.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una aerolínea con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airline with id e7884f54-069d-45a8-bebc-30c75ae457c3 has not been found\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"JetBlue\",\n    \"descripcion\": \"Aerolinea de estados unidos\",\n    \"fechaFundacion\": \"1990-01-01\",\n    \"paginaWeb\":\"www.jetblue.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/e7884f54-069d-45a8-bebc-30c75ae457c3",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"e7884f54-069d-45a8-bebc-30c75ae457c3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una aerolínea con un ID que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"JetBlue\",\n    \"descripcion\": \"Aerolinea de estados unidos\",\n    \"fechaFundacion\": \"1990-01-01\",\n    \"paginaWeb\":\"www.jetblue.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/e7884f54-069d-45a8-bebc-30c75ae457c3",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"e7884f54-069d-45a8-bebc-30c75ae457c3"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-nbqXVNovym6E8UOgsdeRS6yPk6Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:50:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La aerolinea no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una aerolínea por su ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"{{airline_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una aerolínea por su ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/{{airline_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"{{airline_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:50:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar una aerolínea con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airline with id a504f410-a8be-44b4-bb07-89944bc9a082 has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/a504f410-a8be-44b4-bb07-89944bc9a082",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airlines",
+						"a504f410-a8be-44b4-bb07-89944bc9a082"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una aerolínea con un ID que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airlines/a504f410-a8be-44b4-bb07-89944bc9a082",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airlines",
+								"a504f410-a8be-44b4-bb07-89944bc9a082"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-nbqXVNovym6E8UOgsdeRS6yPk6Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:50:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La aerolinea no existe\"\n}"
+				}
+			]
+		}
+	]
+}

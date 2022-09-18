@@ -31,7 +31,7 @@ export class AerolineaService {
 
       async create(aerolinea: Aerolinea): Promise<Aerolinea> {
         var fecha = new Date(Date.now());
-        if (aerolinea.fechaFundacion >= fecha) 
+        if (new Date(aerolinea.fechaFundacion) >= fecha) 
             throw new BusinessLogicException("La fecha de fundacion es mayor a la fecha actual", BusinessError.BAD_REQUEST);
         
         return await this.aerolineaRepository.save(aerolinea);
@@ -45,7 +45,7 @@ export class AerolineaService {
           throw new BusinessLogicException('La aerolinea no existe', BusinessError.NOT_FOUND);
 
         var fecha = new Date(Date.now());  
-        if (aerolinea.fechaFundacion >= fecha) 
+        if (new Date(aerolinea.fechaFundacion) >= fecha) 
             throw new BusinessLogicException("La fecha de fundacion es mayor a la fecha actual", BusinessError.BAD_REQUEST);
 
         return await this.aerolineaRepository.save({...aerolineaExiste,...aerolinea});

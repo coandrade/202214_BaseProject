@@ -5,13 +5,13 @@ import { AeropuertoAerolineaService } from './aeropuerto-aerolinea.service';
 import { AeropuertoDto } from '../aeropuerto/aeropuerto.dto';
 import { Aeropuerto } from '../aeropuerto/aeropuerto.entity';
 
-@Controller('aeropuerto-aerolinea')
+@Controller('airlines')
 export class AeropuertoAerolineaController {
     constructor(private readonly aeropuertoAerolineaService: AeropuertoAerolineaService){}
 
 
-    @Post(':aeropuertoId/airports/:aerolineaId')
-    async addAirportToAirline(@Param('aeropuertoId') aeropuertoId: string, @Param('aerolineaId') aerolineaId: string) {
+    @Post(':aerolineaId/airports/:aeropuertoId')
+    async addAirportToAirline(@Param('aerolineaId') aerolineaId: string, @Param('aeropuertoId') aeropuertoId: string) {
       return await this.aeropuertoAerolineaService.addAirportToAirline(aerolineaId,aeropuertoId);
     }
 

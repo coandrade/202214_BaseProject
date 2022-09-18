@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "cc0f8532-77e2-482d-8553-5aba913d7a7a",
+		"name": "Aeropuertos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23114965"
+	},
+	"item": [
+		{
+			"name": "Crear un aeropuerto válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"airport_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"toc\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un aeropuerto válido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"toc\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "113"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"71-EC6q7GBxJ1f+yucBdaF4wuLkp7k\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:52:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"toc\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\",\n    \"id\": \"32282523-00ea-4a10-8517-002a51324a97\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un aeropuerto inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"   pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"codigolargo\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un aeropuerto inválido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"codigolargo\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:55:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los aeropuertos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of airports > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los aeropuertos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"83-yWZe9JmapwFfkVLXzYSteSq7YP0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:57:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"893d2e47-a05f-4586-9876-c91a45b8b0ff\",\n        \"nombre\": \"Tocumen\",\n        \"codigo\": \"toc\",\n        \"pais\": \"Panama\",\n        \"ciudad\": \"Panama\",\n        \"aerolineas\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto por ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "129"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"81-ogLrZQp394tVD5GABsBnRgAOjaE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 20:59:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"893d2e47-a05f-4586-9876-c91a45b8b0ff\",\n    \"nombre\": \"Tocumen\",\n    \"codigo\": \"toc\",\n    \"pais\": \"Panama\",\n    \"ciudad\": \"Panama\",\n    \"aerolineas\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto por un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airport with id 536d6551-16b3-4ab6-91de-11810db724dc has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/536d6551-16b3-4ab6-91de-11810db724dc",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"536d6551-16b3-4ab6-91de-11810db724dc"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto por un ID que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/536d6551-16b3-4ab6-91de-11810db724dc",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"536d6551-16b3-4ab6-91de-11810db724dc"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 21:01:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un aeropuerto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"El dorado\",\n    \"codigo\": \"doc\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Bogota\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un aeropuerto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"El dorado\",\n    \"codigo\": \"doc\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Bogota\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "117"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"75-n5Ekg6U9GRzwsJJJf68kvM9LWd8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 21:02:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"893d2e47-a05f-4586-9876-c91a45b8b0ff\",\n    \"nombre\": \"El dorado\",\n    \"codigo\": \"doc\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Bogota\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un aeropuerto con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airline with id e7884f54-069d-45a8-bebc-30c75ae457c3 has not been found\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"El dorado\",\n    \"codigo\": \"doc\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Bogota\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/e7884f54-069d-45a8-bebc-30c75ae457c3",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"e7884f54-069d-45a8-bebc-30c75ae457c3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un aeropuerto con un ID que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"El dorado\",\n    \"codigo\": \"doc\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Bogota\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/e7884f54-069d-45a8-bebc-30c75ae457c3",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"e7884f54-069d-45a8-bebc-30c75ae457c3"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 21:02:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto por su ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"{{airport_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto por su ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/{{airport_id}}",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"{{airport_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 21:03:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The airport with id a504f410-a8be-44b4-bb07-89944bc9a082 has not been found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/a504f410-a8be-44b4-bb07-89944bc9a082",
+					"protocol": "{{baseProtocol}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{basePort}}",
+					"path": [
+						"api",
+						"{{apiVersion}}",
+						"airports",
+						"a504f410-a8be-44b4-bb07-89944bc9a082"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto con un ID que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseProtocol}}://{{baseURL}}:{{basePort}}/api/{{apiVersion}}/airports/a504f410-a8be-44b4-bb07-89944bc9a082",
+							"protocol": "{{baseProtocol}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{basePort}}",
+							"path": [
+								"api",
+								"{{apiVersion}}",
+								"airports",
+								"a504f410-a8be-44b4-bb07-89944bc9a082"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Sep 2022 21:03:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		}
+	]
+}
