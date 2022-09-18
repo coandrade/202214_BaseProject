@@ -1,4 +1,10 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Aeropuerto } from './aeropuerto.entity';
+import { AeropuertoService } from './aeropuerto.service';
 
-@Module({})
+@Module({
+  imports: [TypeOrmModule.forFeature([Aeropuerto])],
+  providers: [AeropuertoService]
+})
 export class AeropuertoModule {}
